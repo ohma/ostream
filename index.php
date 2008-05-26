@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>numero dez da noite - ustream viewer -</title>
+<title>Ostream</title>
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <link rel="stylesheet" href="/default.css" type="text/css">
 </head>
 <body>
-<h3>ustream viewer</h3>
+<h3>Ostream - ustream viewer -</h3>
 
 <?php
 // Configurarion
