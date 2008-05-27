@@ -23,17 +23,18 @@ echo "</td>\n";
 }
 
 // Read parameter
-$handle = fopen("$filename","r+");
-if((isset($_GET['width'])) && (preg_match("/^[0-9]+$/",$_GET['width']))) {
-   $width = $_GET['width'];
-} else {
-   $width = $default_width;
+function set_parameter ($param,$def_param) {
+   if((isset($param)) && (preg_match("/^[0-9]+$/",$param))) {
+   $out = $param;
+   } else {
+   $out = $def_param;
+   }
+   return $out;
 }
-if((isset($_GET['col'])) && (preg_match("/^[0-9]+$/",$_GET['col']))) {
-   $col = $_GET['col'];
-} else {
-   $col = $default_col;
-}
+
+$width = set_parameter($_GET['width'],$default_width);
+$col = set_parameter($_GET['col'],$default_col);
+
 
 // Parameter Forms
 echo "<form action=$php_self method=\"GET\" enctype=application/x-www-form-urlencoded>\n";
@@ -47,7 +48,7 @@ echo "</form>\n";
 echo "current parameter width:$width col:$col<br>\n";
 echo "<table class=\"zero\">\n<tr>\n";
 $col_count = 1;
-
+$handle = fopen("$filename","r+");
 while (($data = fgetcsv($handle)) !== FALSE) {
    draw_ustream($data[1],$width,$data[0]);
    if ($col_count == $col) {
